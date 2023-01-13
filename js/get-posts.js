@@ -21,9 +21,9 @@ let GetUrl = (number) => {
 
 // Функция, которая создаст конечный объект
 
-  let CreatePost = () => {
+  let CreatePost = (count) => {
     let objectsList = [];
-    for (let i = 1; i <= 15 ; i++) {
+    for (let i = 1; i <= count ; i++) {
 
       objectsList.push(
         {
