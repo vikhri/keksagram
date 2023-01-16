@@ -1,6 +1,6 @@
 import { CreatePost } from './get-posts.js';
 
-let getNewPost = CreatePost(2);
+let getNewPost = CreatePost(15);
 
 const pictureTemplate = document.querySelector('#picture').content;
 const picturesList = document.querySelector('.pictures');
@@ -9,7 +9,7 @@ const fragment = document.createDocumentFragment();
 
 pictureTitle.classList.remove('visually-hidden');
 
-
+export {getNewPost};
 
 
 for (let i=0 ; i < getNewPost.length; i++) {
