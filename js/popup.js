@@ -10,22 +10,47 @@ let likesNumber = modalWindow.querySelector('.likes-count');
 let commentsNumber = modalWindow.querySelector('.comments-count');
 let commentsCount = modalWindow.querySelector('.social__comment-count');
 let commentsLoader = modalWindow.querySelector('.comments-loader');
-let socialComments = document.querySelectorAll('.social__comment');
 let socialCommentsList = document.querySelector('.social__comments');
 let pictureCapture = document.querySelector('.social__caption');
 let socialComment = document.querySelector('.social__comment');
+const fragmentComments = document.createDocumentFragment();
+
+//Отрисовываем комментарии вместо заглушки
+let showComment = function (postComments) {
+  for (let x = 0; x < postComments.length; x++) {
+    let newComment = socialComment.cloneNode(true);
+    let comment = postComments[x];
+
+    newComment.children[0].src = comment.avatar;
+    newComment.children[1].textContent = comment.message;
+    newComment.children[0].alt = comment.name;
+
+    fragmentComments.appendChild(newComment);
+  }
+
+  socialCommentsList.innerHTML = '';
+  socialCommentsList.append(fragmentComments);
+}
+
+console.log(getNewPost);
 
 
+//Открываем попап по клику, заполняем данными
 let showPopup = function (preview, likes, comments, i) {
-      preview.addEventListener('click', function() {
-      modalWindow.classList.remove('hidden');
-      bigPicture.src = preview.children[0].src;
-      likesNumber.textContent = likes.textContent;
-      commentsNumber.textContent = comments.textContent;
-      pictureCapture.textContent = getNewPost[i].description;
-  });
+
+       preview.addEventListener('click', function() {
+       modalWindow.classList.remove('hidden');
+       console.log('click');
+        bigPicture.src = preview.children[0].src;
+        likesNumber.textContent = likes.textContent;
+        commentsNumber.textContent = comments.textContent;
+        pictureCapture.textContent = getNewPost[i].description;
+        showComment(getNewPost[i].comments);
+    });
 
   };
+
+
 
   for (let i = 0; i < previews.length; i++) {
     showPopup(previews[i], likes[i], comments[i], i);
@@ -36,40 +61,5 @@ let showPopup = function (preview, likes, comments, i) {
   commentsLoader.classList.add('hidden');
 
   document.querySelector('body').classList.add('modal-open');
-
-  console.log(getNewPost);
-
-// добвление описания
-
-pictureCapture.textContent = getNewPost[1].description;
-
-//Отрисовка комментариев
-
-console.log(socialComment);
-console.log(getNewPost[2].comments[0].avatar);
-
-//засунуть комментарии в фрагмент
-const fragmentComments = document.createDocumentFragment();
-
-//const postComments = getNewPost[0].comments;
-
-test(getNewPost[0].comments);
-
-function test(postComments) {
-  for (let x = 0; x < postComments.length; x++) {
-    const comment = postComments[x];
-    let newComment = socialComment.cloneNode(true);
-
-    newComment.children[0].src = postComments[x].avatar;
-    newComment.children[1].textContent = postComments[x].message;
-    newComment.children[0].alt = postComments[x].name;
-
-    fragmentComments.appendChild(newComment);
-  }
-
-  socialCommentsList.innerHTML = '';
-  socialCommentsList.after(fragmentComments);
-}
-
 
 
