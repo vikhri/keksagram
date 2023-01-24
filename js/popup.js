@@ -6,7 +6,7 @@ let likes = document.querySelectorAll('.picture__likes');
 let comments = document.querySelectorAll('.picture__comments');
 let modalWindow = document.querySelector('.overlay');
 let modalWindowClose = modalWindow.querySelector('.big-picture__cancel');
-let bigPicture = document.querySelector('.big-picture__img').children[0];
+let bigPicture = document.querySelector('.big-picture__img').querySelector('img');
 let likesNumber = modalWindow.querySelector('.likes-count');
 let commentsNumber = modalWindow.querySelector('.comments-count');
 let commentsCount = modalWindow.querySelector('.social__comment-count');
@@ -22,9 +22,9 @@ let showComment = function (postComments) {
     let newComment = socialComment.cloneNode(true);
     let comment = postComments[x];
 
-    newComment.children[0].src = comment.avatar;
-    newComment.children[1].textContent = comment.message;
-    newComment.children[0].alt = comment.name;
+    newComment.querySelector('.social__picture').src = comment.avatar;
+    newComment.querySelector('.social__text').textContent = comment.message;
+    newComment.querySelector('.social__picture').alt = comment.name;
 
     fragmentComments.appendChild(newComment);
   }
@@ -38,11 +38,12 @@ console.log(getNewPost);
 
 //Открываем попап по клику, заполняем данными
 let showPopup = function (preview, likes, comments, i) {
+  let previewPicture = preview.querySelector('img');
 
        preview.addEventListener('click', function() {
        modalWindow.classList.remove('hidden');
        console.log('click');
-        bigPicture.src = preview.children[0].src;
+        bigPicture.src = previewPicture.src;
         likesNumber.textContent = likes.textContent;
         commentsNumber.textContent = comments.textContent;
         pictureCapture.textContent = getNewPost[i].description;
@@ -63,7 +64,7 @@ let showPopup = function (preview, likes, comments, i) {
 
   document.querySelector('body').classList.add('modal-open');
 
-  console.log(modalWindow);
+//Закрываем модальное окно
 
 modalWindowClose.addEventListener('click', () => {
   modalWindow.classList.add('hidden');
@@ -72,7 +73,6 @@ modalWindowClose.addEventListener('click', () => {
 
 document.addEventListener('keydown', (event) => {
   // ESCAPE key pressed
-
   if (event.key === "Escape") {
        modalWindow.classList.add('hidden');
    }
