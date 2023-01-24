@@ -5,6 +5,7 @@ let previews = document.querySelectorAll('.picture');
 let likes = document.querySelectorAll('.picture__likes');
 let comments = document.querySelectorAll('.picture__comments');
 let modalWindow = document.querySelector('.overlay');
+let modalWindowClose = modalWindow.querySelector('.big-picture__cancel');
 let bigPicture = document.querySelector('.big-picture__img').children[0];
 let likesNumber = modalWindow.querySelector('.likes-count');
 let commentsNumber = modalWindow.querySelector('.comments-count');
@@ -62,4 +63,18 @@ let showPopup = function (preview, likes, comments, i) {
 
   document.querySelector('body').classList.add('modal-open');
 
+  console.log(modalWindow);
+
+modalWindowClose.addEventListener('click', () => {
+  modalWindow.classList.add('hidden');
+  console.log('cloe')
+});
+
+document.addEventListener('keydown', (event) => {
+  // ESCAPE key pressed
+
+  if (event.key === "Escape") {
+       modalWindow.classList.add('hidden');
+   }
+});
 
