@@ -16,6 +16,18 @@ let pictureCapture = document.querySelector('.social__caption');
 let socialComment = document.querySelector('.social__comment');
 const fragmentComments = document.createDocumentFragment();
 
+let modalClose = function (window) {
+
+  document.addEventListener('keydown', (event) => {
+    // ESCAPE key pressed
+    if (event.key === "Escape") {
+      window.classList.add('hidden');
+     }
+  });
+
+};
+
+
 //Отрисовываем комментарии вместо заглушки
 let showComment = function (postComments) {
   for (let x = 0; x < postComments.length; x++) {
@@ -68,13 +80,8 @@ let showPopup = function (preview, likes, comments, i) {
 
 modalWindowClose.addEventListener('click', () => {
   modalWindow.classList.add('hidden');
-  console.log('cloe')
 });
 
-document.addEventListener('keydown', (event) => {
-  // ESCAPE key pressed
-  if (event.key === "Escape") {
-       modalWindow.classList.add('hidden');
-   }
-});
+
+modalClose(modalWindow);
 

@@ -3,7 +3,7 @@ import { CreatePost } from './get-posts.js';
 
 import './pictures.js';
 import './popup.js';
-
+import './form.js'
 
 CreatePost();
 
