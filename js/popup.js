@@ -16,7 +16,7 @@ let pictureCapture = document.querySelector('.social__caption');
 let socialComment = document.querySelector('.social__comment');
 const fragmentComments = document.createDocumentFragment();
 
-let modalClose = function (window) {
+let сloseOnEscape = function (window) {
 
   document.addEventListener('keydown', (event) => {
     // ESCAPE key pressed
@@ -83,5 +83,5 @@ modalWindowClose.addEventListener('click', () => {
 });
 
 
-modalClose(modalWindow);
+сloseOnEscape(modalWindow);
 
