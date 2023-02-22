@@ -1,9 +1,10 @@
 import { CheckStringLength } from './check.js';
 // import { CreatePost } from './get-posts.js';
 
-import {renderPictures} from './pictures.js';
+import {renderPictures, clearRenderedPictures } from './pictures.js';
 import {renderPopup} from './popup.js';
-import { showFliterBar } from './showfiltres.js';
+import { showFilterBar } from './showfiltres.js';
+import { applyFilter } from './show-filtered-pics.js';
 import './upload-form-open.js';
 import './photo-form-validation.js';
 import './show-filtered-pics.js';
@@ -15,7 +16,9 @@ fetch('https://25.javascript.pages.academy/kekstagram/data')
   .then((data) => {
     renderPictures(data);
     renderPopup(data);
-    showFliterBar();
+    showFilterBar();
+    applyFilter(data);
+
 
   }).catch((err) => {console.log(err)});
 
