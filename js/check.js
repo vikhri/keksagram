@@ -5,7 +5,4 @@ const CheckStringLength = (input, maxlength) => {
     return input.length <= maxlength;
   };
 
-  console.log(CheckStringLength('Привет!', 7));
-
-
 export {CheckStringLength};

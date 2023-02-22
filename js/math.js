@@ -30,8 +30,5 @@ const GetRandomNumber = (min, max) => {
     return (min >= 0 && max > 0);
   }
 
-  // Тесты
-  console.log("Число из заданного диапазона:", GetRandomNumber(0,10)); //ok
-
 
   export {GetRandomNumber};

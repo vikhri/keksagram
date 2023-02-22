@@ -1,6 +1,6 @@
 import { CreatePost } from './get-posts.js';
 
-let getNewPost = CreatePost(15);
+// let getNewPost = CreatePost(15); убираем временные данные
 
 const pictureTemplate = document.querySelector('#picture').content;
 const picturesList = document.querySelector('.pictures');
@@ -9,23 +9,23 @@ const fragment = document.createDocumentFragment();
 
 pictureTitle.classList.remove('visually-hidden');
 
-export {getNewPost};
+// export {getNewPost};
 
+let renderPictures = (posts) => {
 
-for (let i=0 ; i < getNewPost.length; i++) {
+for (let i=0 ; i < posts.length; i++) {
 let newPost = pictureTemplate.cloneNode(true);
 
-newPost.querySelector('img').src = getNewPost[i].url;
-newPost.querySelector('.picture__comments').textContent = getNewPost[i].comments.length;
-newPost.querySelector('.picture__likes').textContent = getNewPost[i].likes;
-newPost.querySelector('a').id = getNewPost[i].id;
+newPost.querySelector('img').src = posts[i].url;
+newPost.querySelector('.picture__comments').textContent = posts[i].comments.length;
+newPost.querySelector('.picture__likes').textContent = posts[i].likes;
+newPost.querySelector('a').id = posts[i].id;
 
 fragment.appendChild(newPost);
 };
 
 pictureTitle.after(fragment);
 
-console.log(picturesList.children);
+};
 
-//записать новую разметку в переменную. экспортировать в попап
-
+export {renderPictures};

@@ -13,7 +13,7 @@ let photoForm = document.getElementById('upload-select-image');
 //   // errorTextClass: 'text-help'
 // };
 
-let pristines = new Pristine(photoForm, defaultConfig);
+let pristines = new Pristine(photoForm);
 
 photoForm.addEventListener('submit', (evt) => {
    evt.preventDefault();
@@ -21,9 +21,11 @@ photoForm.addEventListener('submit', (evt) => {
    const isValid = pristines.validate();
 
   if (isValid) {
-     console.log('Можно отправлять, всё ок');
+    const formData = new FormData(evt.target);
    } else {
      console.log('Нельзя отправлять. Форма невалидна');
    }
  });
+
+
 

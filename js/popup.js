@@ -1,5 +1,9 @@
-import './pictures.js';
-import { getNewPost } from './pictures.js';
+// import './pictures.js';
+// import { getNewPost } from './pictures.js';
+
+
+let renderPopup = (posts) => {
+
 
 let previews = document.querySelectorAll('.picture');
 let likes = document.querySelectorAll('.picture__likes');
@@ -28,6 +32,7 @@ let сloseOnEscape = function (window) {
 };
 
 
+
 //Отрисовываем комментарии вместо заглушки
 let showComment = function (postComments) {
   for (let x = 0; x < postComments.length; x++) {
@@ -45,7 +50,6 @@ let showComment = function (postComments) {
   socialCommentsList.append(fragmentComments);
 }
 
-console.log(getNewPost);
 
 
 //Открываем попап по клику, заполняем данными
@@ -58,17 +62,15 @@ let showPopup = function (preview, likes, comments, i) {
         bigPicture.src = previewPicture.src;
         likesNumber.textContent = likes.textContent;
         commentsNumber.textContent = comments.textContent;
-        pictureCapture.textContent = getNewPost[i].description;
-        showComment(getNewPost[i].comments);
+        pictureCapture.textContent = posts[i].description;
+        showComment(posts[i].comments);
     });
 
   };
 
 
-
   for (let i = 0; i < previews.length; i++) {
     showPopup(previews[i], likes[i], comments[i], i);
-
   }
 
   commentsCount.classList.add('hidden');
@@ -85,3 +87,6 @@ modalWindowClose.addEventListener('click', () => {
 
 сloseOnEscape(modalWindow);
 
+};
+
+export {renderPopup};

@@ -23,6 +23,5 @@ let CommentsList = [];
 return CommentsList;
 }
 
-console.log(CreateCommentList());
-
 export {CreateCommentList};
+

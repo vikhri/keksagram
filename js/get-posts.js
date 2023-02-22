@@ -39,6 +39,6 @@ let GetUrl = (number) => {
   };
 
 
-  console.log('кочнечный список объектов:' , CreatePost());
+
 
 export {CreatePost};
