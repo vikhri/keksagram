@@ -8,7 +8,7 @@ import { applyFilter } from './show-filtered-pics.js';
 import './upload-form-open.js';
 import './photo-form-validation.js';
 import './show-filtered-pics.js';
-
+import './show-uploaded-file.js';
 
 
 fetch('https://25.javascript.pages.academy/kekstagram/data')
